@@ -7,6 +7,8 @@ import { Game } from "./components/Game";
 import { Ranking } from "./components/Ranking";
 import { List } from "./components/List";
 import { Edit } from "./components/Edit";
+import { Example } from "./components/Example";
+import { ExampleEffect } from "./components/ExampleEffect"
 
 const App= () => {
   return (
@@ -20,6 +22,8 @@ const App= () => {
         <Route path={`/ranking/`} element={<Ranking />} />
         <Route path={`/list/`} element={<List />} />
         <Route path={`/edit/`} element={<Edit />} />
+        <Route path={`/example/`} element={<Example />} />
+        <Route path={`/exampleeffect/`} element={<ExampleEffect />} />
       </Routes>
     </BrowserRouter>
   );

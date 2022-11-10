@@ -1,11 +1,17 @@
+import { useLocation } from "react-router-dom";
 import styles from "./Components.module.css";
 import { Header } from "./Header";
 
 export const Login =() => {
+    const location = useLocation()
+    const userRegistrationCompletionMessage = location.state?.userRegistrationCompletionMessage;
+
     return (
         <>
             <Header />
             <main className={styles.center}>
+                <div>{userRegistrationCompletionMessage}</div>
+
                 <form>
                     <div className={styles.page_title}>
                         <p>ログイン</p>

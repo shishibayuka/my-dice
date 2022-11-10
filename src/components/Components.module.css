@@ -116,3 +116,8 @@ nav a {
   border: 1px solid #ccc;
   padding: 10px;
 }
+
+.input_error {
+  color: red;
+  font-weight: bold;
+}
