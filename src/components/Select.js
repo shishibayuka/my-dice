@@ -8,7 +8,7 @@ export const Select = () => {
 
     const [courses, setCourses] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:8100/api/index')
+        axios.get('http://localhost:8100/api/course')
         .then(response => {
             console.log(response)
             setCourses(response.data)
