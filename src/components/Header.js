@@ -10,6 +10,7 @@ export const Header = () => {
             <nav>
                 <ul>
                     <li><Link to={'/'}>HOME</Link></li>
+                    <li><Link to={'/select/'}>SELECT</Link></li>
                     <li><Link to={'/game/'}>GAME</Link></li>
                     <li><Link to={'/ranking/'}>RANKING</Link></li>
                     <li><Link to={'/list/'}>LIST</Link></li>

@@ -9,6 +9,8 @@ import { List } from "./components/List";
 import { Edit } from "./components/Edit";
 import { Example } from "./components/Example";
 import { ExampleEffect } from "./components/ExampleEffect"
+import ApiFetch from './components/example/ApiFetch';
+import { Select } from "./components/Select";
 
 const App= () => {
   return (
@@ -23,9 +25,11 @@ const App= () => {
         <Route path={`/list/`} element={<List />} />
         <Route path={`/edit/`} element={<Edit />} />
         <Route path={`/example/`} element={<Example />} />
-        <Route path={`/exampleeffect/`} element={<ExampleEffect />} />
+        <Route path={`/example_effect/`} element={<ExampleEffect />} />
+        <Route path={`/api_fetch`} element={<ApiFetch />} />
+        <Route path={`/select`} element={<Select />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter>  
   );
 };
 
