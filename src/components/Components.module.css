@@ -37,6 +37,14 @@ nav a {
   margin-right: 35px;
 }
 
+.display_user_name{
+  font-weight: bold;
+  display: block;
+  text-decoration: none;
+  color: gold;
+  margin-right: 35px;
+}
+
 .center {
   text-align: center;
 }

@@ -7,10 +7,17 @@ import { Game } from "./components/Game";
 import { Ranking } from "./components/Ranking";
 import { List } from "./components/List";
 import { Edit } from "./components/Edit";
+import { Select } from "./components/Select";
+import { CourseRegister } from "./components/CourseRegister";
+import { Event } from "./components/Event";
+// 学習用ファイル
+import ApiFetch from './components/example/ApiFetch';
+import Form from './components/example/Form';
 import { Example } from "./components/Example";
 import { ExampleEffect } from "./components/ExampleEffect"
-import ApiFetch from './components/example/ApiFetch';
-import { Select } from "./components/Select";
+
+
+
 
 const App= () => {
   return (
@@ -24,10 +31,15 @@ const App= () => {
         <Route path={`/ranking/`} element={<Ranking />} />
         <Route path={`/list/`} element={<List />} />
         <Route path={`/edit/`} element={<Edit />} />
+        <Route path={`/select`} element={<Select />} />
+        <Route path={`/course_register`} element={<CourseRegister />} />
+        <Route path={`/event`} element={<Event />} />
+        {/* 学習用ルート */}
         <Route path={`/example/`} element={<Example />} />
         <Route path={`/example_effect/`} element={<ExampleEffect />} />
         <Route path={`/api_fetch`} element={<ApiFetch />} />
-        <Route path={`/select`} element={<Select />} />
+        <Route path={`/form`} element={<Form />} />
+
       </Routes>
     </BrowserRouter>  
   );

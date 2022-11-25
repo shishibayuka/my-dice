@@ -44,7 +44,8 @@ const createUser=()=>{
         // 移動するときの方法（参考）
         // document.location.href = "/";
         // window.location.href = "/";
-        // const errorMessage = "エラーです（ ;  ; ）";
+        // const errorMessage = "エラーです（ ;  ; ）";]
+        // navigate('/contact');
         // navigate("/login/", { state: {errorMessage}});
         // navigate("/login/", { state: { userRegistrationCompletionMessage:"登録完了" }});
       })
@@ -55,6 +56,7 @@ const createUser=()=>{
 
         // メールアドレスのエラーがない場合、undefinedのエラーがmapを使用すると出る
         if (error.response.data.email !== undefined){
+            // エラーメッセージを設定
             setInputEmailErrorList(error.response.data.email);
         }
 
@@ -85,6 +87,7 @@ const createUser=()=>{
                    
                         <FormInputFieldItem labelName={"メールアドレス"} id={"email"} type={"text"} onChange={(v) =>setEmail(v)} />
                         <div>
+                            {/* エラーの表示をする */}
                             {inputEmailErrorList.map((errorMessage,index)=> <div className={styles.input_error} key={index}>{errorMessage}</div>)}
                         </div>
                         
