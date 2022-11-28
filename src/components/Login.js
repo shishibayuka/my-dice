@@ -4,9 +4,16 @@ import { Header } from "./Header";
 import { useState } from "react";
 import axios from "axios";
 
+
 export const Login =() => {
+    // signup.jsから移動するときに、設定したメッセージを取り出す処理
     const location = useLocation()
+    // signup.jsでnavigateで値を設定したのでメッセージを取り出せる
+    // navigateで値を設定しないとlocation.stateはnullになる
+    // location.state?.userRegistrationCompletionMessageの?.はnullの時は.userRegistrationCompletionMessageの値にアクセスしない
+    // nullの時に.userRegistrationCompletionMessageにアクセスするとエラーになる
     const userRegistrationCompletionMessage = location.state?.userRegistrationCompletionMessage;
+
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -49,9 +56,11 @@ export const Login =() => {
         <>
             <Header />
             <main className={styles.center}>
-                <div>{userRegistrationCompletionMessage}</div>
+                {/* signup.jsから送ったメッセージを表示  */}
+                <div className={styles.complete_message}>
+                    {userRegistrationCompletionMessage}
+                </div>
 
-                
                 <div className={styles.page_title}>
                     <p>ログイン</p>
                 </div>

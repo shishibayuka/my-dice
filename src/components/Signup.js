@@ -15,9 +15,7 @@ export const Signup =() => {
     const [inputNameErrorList, setInputNameErrorList] = useState(['']); 
     const [inputEmailErrorList, setInputEmailErrorList] = useState(['']); 
 
-
-
-    // Similar to componentDidMount and componentDidUpdate:
+// Similar to componentDidMount and componentDidUpdate:
 //   useEffect(() => {
 //     // Update the document title using the browser API
 //     console.log(msg);
@@ -36,9 +34,11 @@ const createUser=()=>{
         password_confirmation: password_confirmation,
       })
       .then(function (response) {
-        // navigate("/login/", { state: { userRegistrationCompletionMessage:response.data }});
         console.log(response);
-
+        // ログインページに移動して、メッセージを表示する
+        navigate("/login/", { state: { userRegistrationCompletionMessage:"ユーザー登録が完了しました！" }});
+        // navigate("/login/", { state: { userRegistrationCompletionMessage:response.data }});
+        
         // Todo: ユーザー登録後にログイン状態にする、遷移する
 
         // 移動するときの方法（参考）
@@ -69,8 +69,6 @@ const createUser=()=>{
         if (error.response.data.name !== undefined){
             setInputNameErrorList(error.response.data.name);
         }
-
-
       });
 };
 
@@ -83,7 +81,6 @@ const createUser=()=>{
                     <div className={styles.page_title}>
                         <p>新規登録</p>
                     </div>
-
                    
                         <FormInputFieldItem labelName={"メールアドレス"} id={"email"} type={"text"} onChange={(v) =>setEmail(v)} />
                         <div>

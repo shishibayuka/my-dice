@@ -28,6 +28,7 @@ export const Header = () => {
     },[])
 
     const onLogoutClicked = () => {
+        // ログアウトは、localStorageのuserNameとapiTokenを削除することで実現している
         localStorage.removeItem('userName');
         localStorage.removeItem('apiToken');
     };
