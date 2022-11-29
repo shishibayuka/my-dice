@@ -6,16 +6,52 @@ import styles from "./Components.module.css"
 
 export const List = () => {
 
-     const location = useLocation()
-     const courseRegistrationCompletionMessage = location.state?.courseRegistrationCompletionMessage;
+    const location = useLocation()
+    const courseRegistrationCompletionMessage = location.state?.courseRegistrationCompletionMessage;
  
     const [courses, setCourses] = useState([])
 
     // useNavigate() は useEffect や return の中では宣言しない
     const navigate = useNavigate();
+    
+    // 削除処理　※引数をつける
+    const deleteCourse=(course_id)=>{
+        console.log(course_id);
 
+        // 認証のために必要な設定の処理
+        const apiToken = localStorage.getItem('apiToken');
+
+        const headers = {
+                'Authorization': `Bearer ${apiToken}`
+        }
+        // 削除処理のLaravelへのURL設定　※api.phpで指定した「delete」で指定する決まり
+        // web.apiでURIが'/course/{id}'に設定しているので、/api/course/${course_id}にしている
+        axios.delete(`http://localhost:8100/api/course/${course_id}`, {
+                // 送りたい値の設定
+            
+        // 認証のためにheaderを設定する
+        }, {headers: headers})
+        // 処理が成功した場合
+        .then(function(response){
+                console.log(response);
+                // pushはrouter v5 のやり方
+                // navigate.push('/list');
+                // このプロジェクトでは v6 を使っている
+                // navigateだと同じページには遷移できない
+                // navigate("/list");
+                // 同じページを再読み込みする処理
+                window.location.reload();
+        })
+
+        // エラーが出たら
+        .catch(function (error) {
+            console.log(error);
+        });
+    };
+        
     // 画面表示時に実行されるコース一覧のデータを取得している
     useEffect(() => {
+        console.log("useEffect");
         // localStorageにuserNameがあるか無いかでログインを判別するやり方
         // const name = localStorage.getItem('userName')
         // nameがなかった場合の処理
@@ -71,7 +107,9 @@ export const List = () => {
                 <ul>
                     {
                         courses.map(course => <li key={course.id}>{course.name}
-                        <br /><button><Link to={'/edit/'}>編集 </Link></button> <button>削除 </button></li>)
+                        <br /><button><Link to={'/edit/'}>編集 </Link></button> 
+                        <button onClick={() => {deleteCourse(course.id);}}>削除 </button>
+                        </li>)
                     }
                 </ul>
             </div>
