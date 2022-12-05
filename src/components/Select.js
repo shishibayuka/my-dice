@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Components.module.css";
 import { Header } from "./Header";
 import axios from "axios";
@@ -6,11 +7,18 @@ import {useState, useEffect} from 'react'
 
 export const Select = () => {
 
+    // コース情報を格納する変数
     const [courses, setCourses] = useState([])
+
+    // useEffectの中でバックエンド(Laravel)から情報を取得する
+    // 画面の初期表示時にuseEffectが実行され、バックエンドから情報を取得し
+    // 取得した情報を画面に表示する
     useEffect(() => {
         axios.get('http://localhost:8100/api/course')
         .then(response => {
             console.log(response)
+            // responseにバックエンドからreturnされた情報が入っている
+            // setCourseで取得したデータをcoursesに格納している
             setCourses(response.data)
         })
     }, [])
@@ -19,10 +27,11 @@ export const Select = () => {
     return (
         <>
             <Header />
-
+            <h1>コース選択</h1>
             <div>
                 <ul>
                     {
+                        // バックエンドから取得したコースのデータをここで表示している
                         courses.map(course => <li key={course.id}> <button><Link to={'/edit/'}>編集 </Link></button> <button>削除 </button>{course.name}</li>)
                     }
                 </ul>

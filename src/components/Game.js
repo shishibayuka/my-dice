@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Components.module.css";
 import { Header } from "./Header";
 

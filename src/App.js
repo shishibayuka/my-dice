@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
@@ -7,6 +8,7 @@ import { Game } from "./components/Game";
 import { Ranking } from "./components/Ranking";
 import { List } from "./components/List";
 import { Edit } from "./components/Edit";
+import { Update } from "./components/Update";
 import { Select } from "./components/Select";
 import { CourseRegister } from "./components/CourseRegister";
 import { Event } from "./components/Event";
@@ -31,6 +33,7 @@ const App= () => {
         <Route path={`/ranking/`} element={<Ranking />} />
         <Route path={`/list/`} element={<List />} />
         <Route path={`/edit/`} element={<Edit />} />
+        <Route path={`/update/`} element={<Update />} />
         <Route path={`/select`} element={<Select />} />
         <Route path={`/course_register`} element={<CourseRegister />} />
         <Route path={`/event`} element={<Event />} />

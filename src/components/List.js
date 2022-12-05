@@ -1,14 +1,19 @@
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Header } from "./Header";
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from "./Components.module.css"
 
 export const List = () => {
 
     const location = useLocation()
-    const courseRegistrationCompletionMessage = location.state?.courseRegistrationCompletionMessage;
- 
+    // || 論理和 
+    // オプショナルチェーン (?.)はreactの古いバージョンだと使えないため、論理和に書き換えた
+    // null?.valueはundefinedになる
+    // null.valueとしたらエラーとなるので論理和を使っている
+    // (null || {})は{}になる　( "aaa" || {})は"aaa"になる
+    // {}.value は　undefined　になる
+    const courseRegistrationCompletionMessage = (location.state || {}).courseRegistrationCompletionMessage;
     const [courses, setCourses] = useState([])
 
     // useNavigate() は useEffect や return の中では宣言しない
@@ -91,6 +96,21 @@ export const List = () => {
     }, []) // 第二引数が[]になっていると、ページ表示時に一回のみ
     // useEffectの中の処理が実行される
     // 今回はページ表示時に一回のみuseEffectの中が実行される
+    
+    const handleClick=(course)=>{
+        // this.propsはクラスコンポーネント
+        // 関数コンポーネントでないので使えない
+        // history.pushはreact-router v5の書き方
+        // 今回はv6
+        // this.props.history.push({
+        //     pathname: "/update",
+        //     state: { course: course }
+        // });
+        // updateに遷移、id:1をupdate.jsのlocation.stateに送る
+        // navigate("/update/", { state: { id: 1 }});
+        navigate("/update/", { state: {course:course}});
+    
+    }
 
     return (
         <>
@@ -107,7 +127,10 @@ export const List = () => {
                 <ul>
                     {
                         courses.map(course => <li key={course.id}>{course.name}
-                        <br /><button><Link to={'/edit/'}>編集 </Link></button> 
+                        <br />
+                        {/* <button><Link to={'/update/'}>編集 </Link></button>  */}
+                        {/* <button onClick={this.handleClick}>編集 </button> */}
+                        <button onClick={() => {handleClick(course);}}>編集 </button>
                         <button onClick={() => {deleteCourse(course.id);}}>削除 </button>
                         </li>)
                     }

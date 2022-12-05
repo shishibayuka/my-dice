@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./Components.module.css";
 import { Header } from "./Header";
@@ -12,7 +13,7 @@ export const Login =() => {
     // navigateで値を設定しないとlocation.stateはnullになる
     // location.state?.userRegistrationCompletionMessageの?.はnullの時は.userRegistrationCompletionMessageの値にアクセスしない
     // nullの時に.userRegistrationCompletionMessageにアクセスするとエラーになる
-    const userRegistrationCompletionMessage = location.state?.userRegistrationCompletionMessage;
+    const userRegistrationCompletionMessage = (location.state || {}).userRegistrationCompletionMessage;
 
     const navigate = useNavigate();
 
