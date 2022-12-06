@@ -11,7 +11,9 @@ import { Edit } from "./components/Edit";
 import { Update } from "./components/Update";
 import { Select } from "./components/Select";
 import { CourseRegister } from "./components/CourseRegister";
+import { Choice } from "./components/Choice";
 import { Event } from "./components/Event";
+import { Play } from "./components/Play";
 // 学習用ファイル
 import ApiFetch from './components/example/ApiFetch';
 import Form from './components/example/Form';
@@ -36,7 +38,9 @@ const App= () => {
         <Route path={`/update/`} element={<Update />} />
         <Route path={`/select`} element={<Select />} />
         <Route path={`/course_register`} element={<CourseRegister />} />
+        <Route path={`/choice`} element={<Choice />} />
         <Route path={`/event`} element={<Event />} />
+        <Route path={`/play`} element={<Play />} />
         {/* 学習用ルート */}
         <Route path={`/example/`} element={<Example />} />
         <Route path={`/example_effect/`} element={<ExampleEffect />} />

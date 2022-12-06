@@ -16,6 +16,7 @@ export const Update = () => {
     const course = (location.state || {}).course
 
     const navigate = useNavigate();
+
     const [name, setName] = useState(course.name);
     const onNameChanged = (e) => setName(e.target.value);
     
