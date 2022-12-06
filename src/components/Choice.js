@@ -38,7 +38,7 @@ export const Choice = () => {
 
         // 登録処理のLaravelへのURL設定
         // axios.post(url,パラメータ,header)
-        axios.post('http://localhost:8100/api/play_histpry', {
+        axios.post('http://localhost:8100/api/play_history', {
                 // 送りたい値の設定
                 course_id: courseId,
         }, {headers: headers})
