@@ -5,7 +5,7 @@ import React, {useState, useEffect} from 'react'
 import styles from "./Components.module.css"
 
 export const List = () => {
-
+    
     const location = useLocation()
     // || 論理和 
     // オプショナルチェーン (?.)はreactの古いバージョンだと使えないため、論理和に書き換えた

@@ -23,7 +23,7 @@ export const Header = () => {
                     <li><Link to={'/course_register/'}>REGISTER</Link></li>
                     {/* <li><Link to={'/update/'}>UPDATE</Link></li> */}
                     <li><Link to={'/choice/'}>CHOICE</Link></li>
-                    <li><Link to={'/play/'}>PLAY</Link></li>
+                    {/* <li><Link to={'/play/'}>PLAY</Link></li> */}
                     <li><Link to={'/login'} onClick={onLogoutClicked}>LOGOUT</Link></li>
                 </>
             )

@@ -17,8 +17,11 @@ import { Play } from "./components/Play";
 // 学習用ファイル
 import ApiFetch from './components/example/ApiFetch';
 import Form from './components/example/Form';
+import Count from './components/example/Count';
+import Map from './components/example/Map';
 import { Example } from "./components/Example";
 import { ExampleEffect } from "./components/ExampleEffect"
+
 
 
 
@@ -46,6 +49,8 @@ const App= () => {
         <Route path={`/example_effect/`} element={<ExampleEffect />} />
         <Route path={`/api_fetch`} element={<ApiFetch />} />
         <Route path={`/form`} element={<Form />} />
+        <Route path={`/count`} element={<Count />} />
+        <Route path={`/map`} element={<Map />} />
 
       </Routes>
     </BrowserRouter>  
