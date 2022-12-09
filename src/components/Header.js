@@ -22,7 +22,7 @@ export const Header = () => {
                     <li><Link to={'/list/'}>LIST</Link></li>
                     <li><Link to={'/course_register/'}>REGISTER</Link></li>
                     {/* <li><Link to={'/update/'}>UPDATE</Link></li> */}
-                    <li><Link to={'/choice/'}>CHOICE</Link></li>
+                    
                     {/* <li><Link to={'/play/'}>PLAY</Link></li> */}
                     <li><Link to={'/login'} onClick={onLogoutClicked}>LOGOUT</Link></li>
                 </>
@@ -45,8 +45,9 @@ export const Header = () => {
             <nav>
                 <ul>
                     <li><Link to={'/'}>HOME</Link></li>
-                    <li><Link to={'/select/'}>▲SELECT</Link></li>
-                    <li><Link to={'/game/'}>▲GAME</Link></li>
+                    <li><Link to={'/choice/'}>CHOICE</Link></li>
+                    {/* <li><Link to={'/select/'}>▲SELECT</Link></li> */}
+                    {/* <li><Link to={'/game/'}>▲GAME</Link></li> */}
                     <li><Link to={'/ranking/'}>▲RANKING</Link></li>
                     <li><Link to={'/edit/'}>▲EDIT</Link></li>
                     {loginLinkList}

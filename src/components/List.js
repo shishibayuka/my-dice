@@ -6,6 +6,7 @@ import styles from "./Components.module.css"
 
 export const List = () => {
     
+
     const location = useLocation()
     // || 論理和 
     // オプショナルチェーン (?.)はreactの古いバージョンだと使えないため、論理和に書き換えた
@@ -21,6 +22,7 @@ export const List = () => {
     
     // 削除処理　※引数をつける
     const deleteCourse=(course_id)=>{
+        
         console.log(course_id);
 
         // 認証のために必要な設定の処理
