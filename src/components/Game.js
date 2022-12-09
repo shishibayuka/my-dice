@@ -41,6 +41,12 @@ export const Game = () => {
                                 <td>蟻に噛まれた</td>
                                 <td>-100</td>
                             </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>蟻に噛まれた</td>
+                                <td>-100</td>
+                            </tr>
                         </tbody>
                     </table>
                 </center>

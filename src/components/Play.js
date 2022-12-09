@@ -11,60 +11,38 @@ export const Play = () => {
     const [ diceNumber, setDiceNumber ] = useState('');
     const [ eventName, setEventName ] = useState('');
     const [ eventMoney, setEventMoney ] = useState('');
+    const [ gameHistories, setGameHistories ] = useState([]);
+
     const rollDice=()=>{
         console.log("サイコロを振る");
-
+       
         axios.post('http://localhost:8100/api/dice',{
             course_id: course.id,
         })
         .then(function (response){
-            console.log(response);
-            console.log(response.data);
-            console.log(response.data.dice_number);
-            setDiceNumber(response.data.dice_number);
-            setEventName(response.data.event.name);
-            setEventMoney(response.data.event.money);       
+            // console.log(response);
+            // console.log(response.data);
+            // console.log(response.data.dice_number);
+            const responseDiceNumber = response.data.dice_number;
+            const responseEventName = response.data.event.name;
+            const responseEventMoney = response.data.event.money;
+
+            setDiceNumber(responseDiceNumber);
+            setEventName(responseEventName);
+            setEventMoney(responseEventMoney); 
+            console.log('アイテムを追加します');
+            // 上から順番に処理が実行されるわけではない
+            // サイコロを１回振った時は、stateのdiceNumberは初期値が空なので、空の値がgameHistoryに入ってしまう
+            // 以下の書き方だとうまく動かない
+            // const gameHistory={diceNumber:diceNumber, eventName:eventName, eventMoney:eventMoney}
+            const gameHistory={diceNumber:responseDiceNumber, eventName:responseEventName, eventMoney:responseEventMoney}
+            setGameHistories([...gameHistories, gameHistory]);
+            console.log(gameHistories); 
         })
         .catch(function(error){
             console.log(error);
         })
     }
-    // const [ playHistory,setPlayHistory] = useState([''])
-    // const [ grid, setGrid ] = useState([''])
-    
-    // useEffect(() => {
-    //     console.log("useEffect");
-        
-    //     // 認証するためにローカルストレージからAPIトークンを取り出す
-    //     const apiToken = localStorage.getItem('apiToken');
-
-    //     // 認証のためにheaderのAuthorizationにapiTokenを設定
-    //     const headers = {
-    //         'Authorization': `Bearer ${apiToken}`
-    //     }
-        
-    //     // コース一覧を取得
-    //     // 認証のためにheaderを設定する
-    //     axios.get('http://localhost:8100/api/play_history', {headers: headers})
-
-    //     // 認証成功時（headerのAuthorizationにapiTokenを設定している場合）
-    //     // ＝ログインしているとき
-    //     // api.phpでauth:sanctumを利用して認証チェックをしている
-
-    //     .then(response => {
-    //         // console.log(response)
-    //         // console.log(response.data)
-    //         // console.log(response.data.course)
-    //         // console.log(response.data.course.name)
-    //         setPlayHistory(response.data.course.name)
-    //         setGrid(response.data.course.grid)
-
-    //     },[])
-
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     })
-    // })
 
     return (
         <>
@@ -77,6 +55,27 @@ export const Play = () => {
                 <p>出たマス：{diceNumber}</p>
                 <p>イベント：{eventName}</p>
                 <p>イベント収支：{eventMoney}</p>
+                {/* <p>{gameHistories.map((gameHistory)=><li>{gameHistory.diceNumber}{gameHistory.eventName}{gameHistory.eventMoney}</li>)}</p> */}
+
+                <table className={styles.table}>    
+                        <thead>
+                            <tr>
+                                <th scope="col">振った回数</th>
+                                <th scope="col">出たマス</th>
+                                <th scope="col">イベント</th>
+                                <th scope="col">イベント収支</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {gameHistories.map((gameHistory,index)=>
+                                <tr key={index}>
+                                <td>{index+1}</td>
+                                <td>{gameHistory.diceNumber}</td>
+                                <td>{gameHistory.eventName}</td>
+                                <td>{gameHistory.eventMoney}</td>
+                                </tr>)}
+                        </tbody>
+                </table>
             </main>
         </>
     );
